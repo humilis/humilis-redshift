@@ -3,4 +3,4 @@ python:
 - '3.4'
 script:
 - make clean
-- make test
+- travis_wait 30 make test
