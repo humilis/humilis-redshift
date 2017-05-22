@@ -1,6 +1,6 @@
 # Humilis plug-in to deploy a Redshift cluster
 
-[![PyPI](https://img.shields.io/pypi/v/humilis-redshift.svg?style=flat)](https://pypi.python.org/pypi/humilis-kinesis-proxy)
+[![PyPI](https://img.shields.io/pypi/v/humilis-redshift.svg?style=flat)](https://pypi.python.org/pypi/humilis-redshift)
 
 A [humilis][humilis] plug-in layer that deploys a REST API in AWS API Gateway
 that acts as a proxy to the AWS Kinesis service.
