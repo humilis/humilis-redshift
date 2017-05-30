@@ -10,6 +10,13 @@
 {% set cluster_name = context.environment.name + "-" + context.stage.lower() + "-" + context.layer.name %}
 {% endif %}
 resources:
+    {% if decrypt_arn %}
+    DbPasswordDecrypt:
+        Type: "Custom::KMSDecrypt"
+        Properties:
+            ServiceToken: "{{decrypt_arn}}"
+            Ciphertext: "{{master_user_password}}"
+    {% endif %}
     ClusterSecurityGroup:
         Type: "AWS::EC2::SecurityGroup"
         Properties:
@@ -59,7 +66,12 @@ resources:
             {% endif %}
             DBName: {{db_name}}
             MasterUsername: {{master_username}}
+            {% if decrypt_arn %}
+            MasterUserPassword:
+                Fn::Sub: ${DbPasswordDecrypt.Plaintext}
+            {% else %}
             MasterUserPassword: {{master_user_password}}
+            {% endif %}
             NodeType: {{node_type}}
             {% if number_of_nodes > 1 %}
             NumberOfNodes: {{number_of_nodes}}
