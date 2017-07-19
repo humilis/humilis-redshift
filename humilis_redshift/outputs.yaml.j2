@@ -1,5 +1,12 @@
 ---
 outputs:
+    RedshiftIamRoleArn:
+        Description: The IAM role associate to the Redshift cluster
+        Value:
+            "Fn::GetAtt":
+                - RedshiftIamRole
+                - Arn
+
     DbName:
         Description: The name of the database
         Value: {{db_name}}

@@ -4,6 +4,10 @@ meta:
         Redshift cluster
 
     parameters:
+        iam_role_policies:
+            description: A list of IAM policies to attach to the cluster role
+            value: []
+
         decrypt_arn:
             description: The ARN of the custom resource providing KMS decryption
             value:
