@@ -15,6 +15,10 @@ outputs:
         Description: The master user name 
         Value: {{master_username}}
 
+    MasterUserPassword:
+        Description: The KMS-encrypted base64-encoded master user password
+        Value: {{master_user_password}}
+ 
     ClusterEndpointAddress:
         Description: The address of the cluster endpoint.
         Value:
