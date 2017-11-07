@@ -13,15 +13,15 @@ resources:
     RedshiftIamRole:
         Type: "AWS::IAM::Role"
         Properties:
-            AssumeRolePolicyDocument: 
+            AssumeRolePolicyDocument:
                 Version: "2012-10-17"
                 Statement:
                   -
                     Effect: "Allow"
-                    Principal: 
-                      Service: 
+                    Principal:
+                      Service:
                         - "redshift.amazonaws.com"
-                    Action: 
+                    Action:
                       - "sts:AssumeRole"
             Path: "/"
             {% if iam_role_policies %}
@@ -91,6 +91,9 @@ resources:
             {% endif %}
             DBName: {{db_name}}
             MasterUsername: {{master_username}}
+            {% if parameter_group_name %}
+            ClusterParameterGroupName: {{parameter_group_name}}
+            {% endif %}
             {% if decrypt_arn %}
             MasterUserPassword:
                 Fn::Sub: ${DbPasswordDecrypt.Plaintext}

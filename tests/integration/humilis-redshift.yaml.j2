@@ -12,6 +12,7 @@ humilis-redshift:
           description: Redshift cluster
           domain: {{domain}}
           hosted_zone_id: {{hosted_zone_id}}
+          parameter_group_name: default.redshift-1.0
           vpc_id:
             $layer_output:
                 layer_name: vpc
